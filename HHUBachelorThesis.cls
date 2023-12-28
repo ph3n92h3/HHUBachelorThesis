@@ -180,7 +180,8 @@
     subsubsection/format = {\bfseries \heiti \zihao{-4}}
 }
 % 上角标引用文献
-\renewcommand{\cite}[1]{\textsuperscript{\zihao{-4} \cite{#1}}}
+% \renewcommand{\cite}[1]{\textsuperscript{\zihao{-4} \cite{#1}}}
+% 似乎不用这样重新定义，因为 gbt7714 宏包已经设置了引用样式
 % 页眉页脚
 \pagestyle{fancy}
 \fancyhead[C]{\small 河海大学本科毕业论文}
