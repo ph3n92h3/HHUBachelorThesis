@@ -1,24 +1,26 @@
-\ProvidesClass{HHUBachelorThesis}\PassOptionsToPackage{AutoFakeBold, AutoFakeSlant}{xeCJK}
-\LoadClass[zihao = -4]{ctexart}
+\ProvidesClass{HHUBachelorThesis}
+% \PassOptionsToPackage{AutoFakeBold, AutoFakeSlant}{xeCJK} % XeLaTeX
+\LoadClass[twoside, zihao = -4]{ctexart}
+\defaultfontfeatures{AutoFakeBold = 2} % AutoFakeSlant = 0.35, LuaLaTeX
 
-\usepackage[font={small, sf}]{caption}
+\usepackage{amsmath}\allowdisplaybreaks\numberwithin{equation}{section}
+\usepackage[font = {small, sf}]{caption}
 \usepackage{fancyhdr}
 \usepackage{fontspec}
 \usepackage{gbt7714}
 \usepackage[
     paper = a4paper,
-    top = 2.5cm,
-    bottom = 2.5cm,
-    left = 3cm,
-    right = 3cm,
-    headheight = 1.5cm,
-    footskip = 1.75cm
+    top = 2.5cm, bottom = 2.5cm, left = 3cm, right = 3cm, headheight = 1.5cm, footskip = 1.75cm
+    % top = 0.98in, bottom = 0.98in, left = 1.18in, right = 1.18in, headheight = 0.59in, footskip = 0.69in
 ]{geometry}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage{titletoc}
 
 \setmainfont{Times New Roman}
-\setsansfont{Arial}
+\setsansfont{SimHei}
+\setCJKmainfont{SimSun}
+\setCJKsansfont{SimHei}
 \linespread{1.625}
 
 \newcommand{\studentnumber}[1]{\def\StudentNumber{#1}}
@@ -33,10 +35,14 @@
 \newcommand{\subjecten}[1]{\def\Subjecten{#1}}
 \newcommand{\nameen}[1]{\def\Nameen{#1}}
 \newcommand{\advisoren}[1]{\def\Advisoren{#1}}
+\newcommand{\declaresign}[1]{\def\DeclareSign{#1}}
+\newcommand{\declaredate}[1]{\def\DeclareDate{#1}}
 \newcommand{\abstractzh}[1]{\def\Abstractzh{#1}}
 \newcommand{\keywordszh}[1]{\def\Keywordszh{#1}}
 \newcommand{\abstracten}[1]{\def\Abstracten{#1}}
 \newcommand{\keywordsen}[1]{\def\Keywordsen{#1}}
+
+\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 
 % 中文封面
 \newcommand{\ChineseCover}{
@@ -48,7 +54,7 @@
     \vspace{32pt}
     \begin{figure}[h]
         \centering
-        \includegraphics[width = \textwidth]{./HHULogo.png}
+        \includegraphics[width = \textwidth]{./media/HHUname.png}
     \end{figure}
     \vspace{32pt}\vspace{32pt}
     \begin{center}
@@ -70,7 +76,7 @@
         \number\year 年 \number\month 月 \\
         中国\hspace{1em}南京
     \end{center}
-    \clearpage
+    \clearemptydoublepage
 }
 % 英文封面
 \newcommand{\EnglishCover}{
@@ -85,17 +91,17 @@
     \vspace{32pt}\vspace{32pt}\vspace{32pt}\vspace{32pt}
     \begin{center} \zihao{4}
         \begin{tabular}{l@{:}c}
-            College     & \Collegeen \\
-            Subject     & \Subjecten \\
-            Name        & \Nameen    \\
-            Directed by & \Advisoren
+            College     & \ \Collegeen \\
+            Subject     & \ \Subjecten \\
+            Name        & \ \Nameen    \\
+            Directed by & \ \Advisoren
         \end{tabular}
     \end{center}
     \vspace{32pt}\vspace{32pt}
     \begin{center}
         \zihao{-2} NANJING CHINA
     \end{center}
-    \clearpage
+    \clearemptydoublepage
 }
 % 学术声明
 \newcommand{\AcademicStatement}{
@@ -111,20 +117,19 @@
 
     \vspace{32pt}\vspace{32pt}\vspace{32pt}\vspace{32pt}
 
-    {\songti \zihao{4} 本人签名：\underline{\hspace{6em}} \hspace{3em} 日期：\underline{\hspace{6em}}}
-    \clearpage\shipout\null % 空白页
+    {\noindent \songti \zihao{4} 本人签名：\underline{\DeclareSign} \hspace{3em} 日期：\underline{\DeclareDate}}
+    \clearemptydoublepage
 }
 % 中文摘要
 \newcommand{\AbstractzhPage}{
-    \thispagestyle{empty}
+    \thispagestyle{plain}
     \vspace{32pt}
     \begin{center}
         \bfseries \heiti \zihao{-2} 摘\hspace{1em}要
+        \phantomsection\addcontentsline{toc}{section}{摘要}
     \end{center}
-    \addcontentsline{toc}{section}{摘要}
 
-    \renewcommand{\thepage}{\Roman{page}}
-    \setcounter{page}{1}
+    \pagenumbering{Roman}
 
     \vspace{32pt}
 
@@ -134,27 +139,27 @@
 
     {\bfseries \heiti \zihao{-4} 关键词：}
     {\songti \zihao{-4} \Keywordszh}
-    \clearpage
+    \clearemptydoublepage
 }
 % 英文摘要
-\newcommand{\AbstractenPage}{
-    \thispagestyle{empty}
-    \vspace{32pt}
-    \begin{center}
-        \bfseries \zihao{-2} ABSTRACT
-    \end{center}
-    \addcontentsline{toc}{section}{ABSTRACT}
+\newcommand{\AbstractenPage}{{
+            \pagestyle{plain}
+            \vspace{32pt}
+            \begin{center}
+                \bfseries \zihao{-2} ABSTRACT
+                \phantomsection\addcontentsline{toc}{section}{ABSTRACT}
+            \end{center}
 
-    \vspace{32pt}
+            \vspace{32pt}
 
-    {\zihao{-4} \Abstracten}
+            {\zihao{-4} \Abstracten}
 
-    \vspace{32pt}
+            \vspace{32pt}
 
-    {\bfseries \zihao{-4} Key words:}
-    {\zihao{-4} \Keywordsen}
-    \clearpage
-}
+            {\bfseries \zihao{-4} Key words:}
+            {\zihao{-4} \Keywordsen}
+            \clearemptydoublepage
+        }}
 % 目录
 \renewcommand{\contentsname}{{\bfseries \heiti \zihao{-2} 目\ \ 录}}
 
@@ -164,19 +169,18 @@
 \let\oldappendix\appendix
 \renewcommand{\appendix}{
     \oldappendix
-    \titlecontents{section}[0pt]{\bfseries \songti \zihao{4}}{附录 \thecontentslabel\ \ }{}{\titlerule*{.}\contentspage}
+    \titlecontents{section}[0pt]{\bfseries \songti \zihao{4}}{\thecontentslabel\ \ }{}{\titlerule*{.}\contentspage}
 }
+\newcommand{\ToCPage}{{
+            \pagestyle{plain}
+            \tableofcontents
+            \addcontentsline{toc}{section}{目录}
 
-\newcommand{\ToCPage}{
-    \thispagestyle{empty}
-    \tableofcontents
-    \addcontentsline{toc}{section}{目录}
-
-    \clearpage\shipout\null % 空白页
-    \renewcommand{\thepage}{\arabic{page}}
-    \setcounter{page}{1}
-}
+            \clearemptydoublepage
+            \pagenumbering{arabic}
+        }}
 % 章节标题
+\AddToHook{cmd/section/before}{\clearpage}
 \ctexset{
     section = {
       name = {第,章},
@@ -186,7 +190,8 @@
     subsection/format = {\bfseries \heiti \zihao{4}},
     subsubsection = {
             format = {\bfseries \heiti \zihao{-4}},
-            numberformat = {\sffamily}}
+            numberformat = {\sffamily}},
+    appendix/name = {附录}
 }
 % 上角标引用文献
 % \renewcommand{\cite}[1]{\textsuperscript{\zihao{-4} \cite{#1}}}
@@ -196,15 +201,10 @@
 \fancyhf{}
 \fancyhead[C]{\small 河海大学本科毕业论文}
 \fancyfoot[C]{\thepage}
-\let\oldbibliography\bibliography
-\renewcommand{\bibliography}[1]{
-    \clearpage\fancyhead{}\renewcommand{\headrulewidth}{0pt}
-    \oldbibliography{#1}
-}
 % 公式、图表
 \counterwithin{equation}{section}
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 % 参考文献
-\renewcommand{\refname}{\heiti \zihao{-2} 参考文献}
+\renewcommand{\refname}{\bfseries \heiti \zihao{-2} 参考文献}
 \bibliographystyle{gbt7714-2005-numerical}

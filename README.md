@@ -7,9 +7,9 @@
 
 - [HHUBachelorThesis.cls](/HHUBachelorThesis.cls): Template
 - [HHUBachelorThesis.tex](/HHUBachelorThesis.tex): $\LaTeX$ source code of Example
-- [HHUBachelorThesis.png](/HHUBachelorThesis.png): Test image of Example
 - [HHUBachelorThesis.bib](/HHUBachelorThesis.bib): References of Example
-- [HHULogo.png](/HHULogo.png)
+- [HHUBachelorThesis.png](./media/HHUBachelorThesis.png): Test image of Example
+- [HHUname.png](./media/HHUname.png): The handwritten name of the university appeared on the Chinese cover
 
 ## To-Do List
 

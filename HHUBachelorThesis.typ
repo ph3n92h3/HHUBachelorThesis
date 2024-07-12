@@ -31,15 +31,15 @@
   [(#counter(heading.where(level: 1)).get().first().#num)]
 })
 #set page(margin: (x: 3cm, y: 2.5cm))
-#set par(leading: 15.5pt, first-line-indent: 2em, justify: true)
-#set text(font: 宋体, size: 字号.小四, lang: "zh", hyphenate: false)
+#set par(first-line-indent: 2em, leading: 15.5pt, justify: true)
+#set text(font: 宋体, hyphenate: false, lang: "zh", region: "cn", size: 字号.小四)
 
 // 中文封面
 #text(
   font: "SimHei",
   size: 10pt,
 )[
-  #h(1fr) 学号 #box(width: 5em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[2010020129]\
+  #h(1fr) 学号 #box(width: 5em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[0123456789]\
   #h(1fr) 年级 #box(
     width: 5em,
     stroke: (bottom: 0.5pt),
@@ -48,14 +48,12 @@
 ]
 #v(32pt)
 #set align(center)
-#image("HHULogo.png")
+#image("HHUname.png")
 #v(32pt)#v(32pt)
 #text(font: 宋体, size: 字号.一号)[ *本科毕业论文* ]
 #v(32pt)
 #text(font: 黑体, size: 字号.二号)[*植物对泥沙沉降规律的影响研究*]
-#v(32pt) #text(
-  size: 15pt,
-)[
+#v(32pt) #text(size: 字号.小三)[
   #text(font: 黑体)[*专#h(2em)业*] #box(width: 10em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[**]\
   #text(font: 黑体)[*姓#h(2em)名*] #box(width: 10em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[**]\
   #text(font: 黑体)[*指导老师*] #box(width: 10em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[**]\
@@ -84,9 +82,9 @@
     [Subject],
     [: XXX XXX],
     [Name],
-    [: X X X],
+    [:#h(1.25em)X X X#h(1.25em)],
     [Directed by],
-    [: XXX Professor],
+    [:#h(1.5em)XXX#h(1.5em)Professor],
   )
 ]
 #v(32pt)#v(32pt)\
@@ -100,17 +98,12 @@
 // 学术声明
 #align(center)[#text(size: 字号.二号)[*郑 重 声 明*]]
 #v(32pt)
-#par(
-  leading: 13.5pt,
-)[#text(
-    size: 14pt,
-  )[
+#par(leading: 13.5pt)[#text(size: 字号.四号)[
     本人呈交的毕业论文，是在导师的指导下，独立进行研究工作所取得的成果，所有数据、图片资料真实可靠。尽我所知，除文中已经注明引用的内容外，本设计（论文）的研究成果不包含他人享有著作权的内容。对本设计（论文）所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确的方式标明。本设计（论文）的知识产权归属于培养单位。
     #v(32pt)#v(32pt)#v(32pt)#v(32pt)
-    #par(
-      first-line-indent: 0pt,
-    )[本人签名：#box(width: 7em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[] #h(3em) 日期：#box(width: 7em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[]]
+    #par(first-line-indent: 0pt)[本人签名：#box(width: 7em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[] #h(3em) 日期：#box(width: 7em, stroke: (bottom: 0.5pt), outset: (bottom: 2pt))[]]
   ]]
+
 #pagebreak()#pagebreak()
 #set page(numbering: "I")
 #counter(page).update(1)
@@ -136,14 +129,7 @@
   align(center)[#text(size: 字号.小二)[*ABSTRACT*]]
 }
 #v(32pt)
-Fluvial river processes evolve over time in response to the constant interaction
-between sediment and the water column. If vegetation is present within the water
-column, the change in turbulence characteristics will impact the movement of
-sediment, in particular the settling velocity. In this paper, the influence of
-vegetation on the settling velocities of sediment particles is studied
-experimentally. The non-submerged vegetation friction factor in steady uniform
-flow is considered by under different flumedischarge quantities. The main
-outcomes can be summarized as follows:
+Fluvial river processes evolve over time in response to the constant interaction between sediment and the water column. If vegetation is present within the water column, the change in turbulence characteristics will impact the movement of sediment, in particular the settling velocity. In this paper, the influence of vegetation on the settling velocities of sediment particles is studied experimentally. The non-submerged vegetation friction factor in steady uniform flow is considered by under different flumedischarge quantities. The main outcomes can be summarized as follows:
 
 *Key words:* sediment；rigid vegetation；settling velocity；turbulence characterize
 #pagebreak()
@@ -161,7 +147,7 @@ outcomes can be summarized as follows:
 #pagebreak()
 
 // 章节标题
-#set heading(numbering: (..nums)=>{
+#set heading(numbering: (..nums) => {
   if nums.pos().len() == 1 {
     [第 #nums.pos().first() 章]
   } else {
@@ -174,10 +160,10 @@ outcomes can be summarized as follows:
   text(font: 黑体, size: 字号.小二)[#it]
 }
 #show heading.where(level: 2): it => {
-  text(font: 黑体, size: 字号.四号)[#it]
+  text(font: 黑体, size: 字号.四号)[#it #v(0.5em)]
 }
 #show heading.where(level: 3): it => {
-  text(font: 黑体, size: 字号.小四)[#it]
+  text(font: 黑体, size: 字号.小四)[#it #v(0.5em)]
 }
 
 // 正文
@@ -193,12 +179,12 @@ outcomes can be summarized as follows:
 
 == 问题的提出及研究意义
 
-#h(2em) 泥沙在自然界中的河流中普遍存在着，泥沙含量的不同影响着河流流态，加上各种泥沙特性不同，使得河流泥沙问题更加复杂多变。如广泛分布在黄河流域一带的黄土地质均匀，其粉砂含量占 $60\% ~ 70\%$，缺乏团粒结构，粒间的固结主要依靠硫酸钙质，这种硫酸钙质遇水极易溶解流失，加上黄土孔隙率极高，抗蚀能力很差。
+#h(2em) 泥沙在自然界中的河流中普遍存在着，泥沙含量的不同影响着河流流态，加上各种泥沙特性不同，使得河流泥沙问题更加复杂多变@钱宁1983。如广泛分布在黄河流域一带的黄土地质均匀，其粉砂含量占 $60\% ~ 70\%$，缺乏团粒结构，粒间的固结主要依靠硫酸钙质，这种硫酸钙质遇水极易溶解流失，加上黄土孔隙率极高，抗蚀能力很差。
 
 === 问题提出
 
 #h(2em) 近年来，随着环境的日益恶化，人们对生态日益重视，含有植物的水流问题也已经成为河流动力学研究中的热点之一。直观的了解，河渠水流中的植物不仅减少了过水面积，加大了河渠地面的粗糙程度，降低了河渠的行洪能力，加大了两岸的洪灾威胁。
-@钱宁1983 @唐洪武2007 @kouwen1969 @Gourlay1970
+@唐洪武2007 @kouwen1969 @Gourlay1970
 
 #pagebreak()
 
@@ -209,12 +195,68 @@ outcomes can be summarized as follows:
 Stokes 曾以粘滞性流体的一般性的运动方程式作基础，忽略惯性项的条件下推导出滞留区的阻力系数为 $ C_D = 24 \/ upright("Red") $
 
 （2）表示例：
+#show figure.caption: it => [
+  #text(font: 黑体, size: 字号.五号)[#it.supplement #context it.counter.display(it.numbering) #it.body]
+]
+#align(center)[#set text(size: 字号.五号)
+  #figure(
+    caption: figure.caption(
+      position: top,
+      [光滑明渠水流实验水力条件],
+    ),
+    table(
+      columns: 6,
+      inset: (
+        x: 20pt,
+      ),
+      align: center + horizon,
+      table.cell(rowspan: 2)[实验#v(-0.5em)编码],
+      [*H*],
+      [*Q*],
+      [*J*],
+      [*B*],
+      $U_\*$,
+      [cm],
+      [L/s],
+      $permille$,
+      [cm],
+      [cm/s],
+      [w1],
+      $18$,
+      $7.56$,
+      $0.02$,
+      $42$,
+      $0.19$,
+      [w2],
+      $18$,
+      $11.34$,
+      $0.07$,
+      $42$,
+      $0.68$,
+      [w3],
+      $18$,
+      $15.12$,
+      $0.13$,
+      $42$,
+      $1.27$,
+      [w4],
+      $18$,
+      $18.9$,
+      $0.21$,
+      $42$,
+      $2.05$,
+      [w5],
+      $18$,
+      $22.68$,
+      $0.28$,
+      $42$,
+      $2.73$,
+    ),
+  )]
+其中：$U_\*$ 为摩阻流速，$U_\* = sqrt(J R g)$，(其中 $R$ 为水力半径)；$J$ 为水力坡降，$B$ 为水槽宽度，$H$ 为水深。
 
 （3）图示例：
-#text(
-  font: 黑体,
-  size: 字号.五号,
-)[#figure(image("HHUBachelorThesis.png"), caption: [清水明渠水流下 w2 工况下的三维时均流速图])]
+#figure(image("HHUBachelorThesis.png"), caption: [清水明渠水流下 w2 工况下的三维时均流速图])
 
 #pagebreak()
 
